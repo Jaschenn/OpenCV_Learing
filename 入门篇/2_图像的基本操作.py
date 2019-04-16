@@ -18,4 +18,24 @@ print(px_blue)  # 只获取蓝色通道的值
 '''
 图片属性
 '''
-print(img.shape)
+print(img.shape)  # 同样的彩色图输出 图片大小 通道数量，gray图片返回大小
+
+print(img.dtype)  # 经验之谈：很多错误都是因为数据类型不对导致的，所以健壮的代码应该对这个属性加以判断。
+
+print(img.size)   # 获取图片的像素= 长*宽*通道数量
+
+'''
+截取图片ROI,可以按照距离进行划分
+'''
+num1 = img[0:46, 0:30]
+num2 = img[0:46, 31:60]
+num3 = img[0:46, 61:90]
+num4 = img[0:46, 91:120]
+cv2.imshow('nums1', num1)
+cv2.imshow('nums2', num2)
+cv2.imshow('nums3', num3)
+cv2.imshow('nums4', num4)
+cv2.waitKey(0)
+
+b, g, r = cv2.split(img)
+# 这样可以得到三个通道的颜色，同样也可以使用numpy的索引，例如 b = img[:, :, 0]
